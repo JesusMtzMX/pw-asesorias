@@ -8,8 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Estilos Css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Red+Hat+Text:400,500,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="sweetalert/SweetAlert2/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -85,9 +84,8 @@
     { //mysql: año, mes dia   input: año, mes, dia   checkdate; mes, dia, año  2020-12-16
         $valores = explode('-', $fecha);
         if(count($valores) == 3 && checkdate($valores[1], $valores[2], $valores[0]))
-        {
-            if($valores[0] < 2020 || $valores[0] > 2021)
-            {return true;}
+        {            
+            return true;
         }
         
         return false;
@@ -106,13 +104,15 @@
         $validacion=validar();
         $asesoria = new Asesoria();
 
-        if(isset($_POST['txtTemaAsesoria']) && isset($_POST['txtAreaEstudio']) && isset($_POST['inpFecha']))
+        if(isset($_POST['txtTemaAsesoria']) && isset($_POST['txtAreaEstudio']) && isset($_POST['inpFecha']) && isset($_POST['inpHora']))
         {            
-            $asesoria->idAsesor=$_POST['txtIDAsesor'];
-            $asesoria->idAsesorado=$_SESSION['usuarioID'];
-            $asesoria->tema=$_POST['txtTemaAsesoria'];
-            $asesoria->areaEstudio=$_POST['txtAreaEstudio'];
-            $asesoria->fecha=$_POST['inpFecha'];
+            $asesoria->IDAsesor=$_POST['txtIDAsesor'];
+            $asesoria->IDAsesorado=$_SESSION['usuarioID'];
+            $asesoria->Tema=$_POST['txtTemaAsesoria'];
+            $asesoria->AreaEstudio=$_POST['txtAreaEstudio'];
+            $asesoria->Fecha=$_POST['inpFecha'];
+            $asesoria->Hora=$_POST['inpHora'];
+            $asesoria->Estatus='Pospuesta';
         }       
         if($validacion==""){
             //Datos correctos
@@ -221,7 +221,7 @@
                 ?>
                 <tr>
                     <td>
-                        <img src="<?= $asesor->Foto?>" alt="<?= "Asesor " . $asesor->Nombre ?>">
+                        
                     </td>
                     <td>
                         <h6><?= $asesor->Nombre ?> <?= $asesor->Apellidos ?></h6>

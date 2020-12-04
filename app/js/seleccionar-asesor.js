@@ -1,23 +1,24 @@
-let modal = document.querySelector(".modal");
-let modalTitle = document.querySelector(".modal-title");
-let btnAgendar = document.querySelector(".btn-agendar");
-let btnConfirmar = document.querySelector(".btnConfirmarAsesoria");
-
-asignardatos = (asesor)=>
+$(document).ready(function()
 {
-    modalTitle.innerHTML = `Asesoría con ${asesor}`;    
-}
+    let modalTitle = document.querySelector(".modal-title");
 
-btnConfirmar.addEventListener("click", ()=>{
+    let idAsesor = document.querySelector("#txtIDAsesor");
+
+    asignardatos = (asesor, id)=>
+    {
+        modalTitle.innerHTML = `Asesoría con ${asesor} ${id}`;
+        idAsesor.value = id;    
+    }
+
+    // btnConfirmar.addEventListener("click", ()=>{
     // Swal.fire(
     //     'Asesoría guardada',
     //     'Se lo haremos saber a tu asesor.',
     //     'success'
     // );
-    //$('.modal').modal('hide');
-});
-
-$(document).ready(function(){
+    // $('.modal').modal('hide');
+    // });
+    
   //$("li.active").removeClass("active");
   //$("#mnuProductos").addClass("active");
 

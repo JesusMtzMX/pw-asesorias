@@ -194,4 +194,51 @@ class Asesoria_Dao
             Conexion::cerrarConexion();
         }
 	}
+
+	public function obtenerAsesoriasUsuario($IDAsesorado)
+	{
+		try
+		{
+            $this->conectar();
+            
+			$lista = array();
+
+			$sentenciaSQL = $this->conexion->prepare
+			("SELECT CONCAT(asesores.Nombre, ' ', asesores.Apellidos) Asesor, CONCAT(asesorados.Nombre, ' ', asesorados.Apellidos) Asesorado,
+			asesorias.Tema, asesorias.AreaEstudio, asesorias.Fecha, asesorias.Hora, asesorias.Estatus
+			FROM asesorias
+			INNER JOIN asesorados ON asesorias.IDAsesorado = asesorados.IDAsesorado
+			INNER JOIN asesores ON asesorias.IDAsesor = asesores.IDAsesor WHERE asesorados.IDAsesorado = '?';
+			");
+			
+			$sentenciaSQL->execute([$IDAsesorado]);
+            
+			foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila)
+			{
+				$obj = array(
+					$fila->Asesor,
+					$fila->Asesorado,
+					$fila->Tema,
+					$fila->AreaEstudio,
+					$fila->Fecha,
+					$fila->Hora,
+					$fila->Estatus
+				);
+				
+				array_push($lista, $obj);
+			}
+            
+			return $lista;
+		}
+		catch(Exception $e)
+		{
+			echo $e->getMessage();
+			return null;
+		}
+		finally
+		{
+            Conexion::cerrarConexion();
+        }
+	}
+
 }
