@@ -8,13 +8,13 @@
 
     <ul class="lists">
 
-      <li><a href="#" class="active">Inicio</a></li>
+      <li><a href="index.php">Inicio</a></li>
 
-      <li><a href="#lista-cursos">Cursos</a></li>      
+      <li><a href="index.php#lista-cursos">Cursos</a></li>      
 
       <li class="nav-item dropdown">
 
-        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Asesores</a>
 
         <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
@@ -27,11 +27,12 @@
       </li>
 
       <li><a href="chat-asesor.php">Chat</a></li>
-      <li><a href="#acerca-de">Acerca de</a></li>
+
+      <li><a href="mi-agenda.php">Ver mi agenda</a></li>
 
       <li class="nav-item dropdown">
 
-        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false"><?= $_SESSION['username']?>
         </a>
         

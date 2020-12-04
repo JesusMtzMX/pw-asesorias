@@ -86,7 +86,7 @@
         $valores = explode('-', $fecha);
         if(count($valores) == 3 && checkdate($valores[1], $valores[2], $valores[0]))
         {
-            if($valores[0] < 2020 || $valores[0] > 2020)
+            if($valores[0] < 2020 || $valores[0] > 2021)
             {return true;}
         }
         

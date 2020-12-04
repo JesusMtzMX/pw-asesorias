@@ -82,7 +82,7 @@
                         <h6 class="my-3"><?= $asesor->Nombre ?> <?= $asesor->Apellidos ?></h6>
                     </td>
                     <td>
-                        <a type="button"><?= $asesor->Paypal?></a>
+                        <a href="https://<?=$asesor->Paypal?>" class="btn btn-primary btn-outline">Ir a paypal del asesor</a>
                     </td>
                 </tr>
             <?php
