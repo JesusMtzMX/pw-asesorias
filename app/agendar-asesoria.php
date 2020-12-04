@@ -71,6 +71,9 @@
         if (!validar_fecha_espanol($_POST["inpFecha"]))
 			$textoValidacion.="<li>Debes seleccionar una fecha correcta</li>";
 
+        if (!isset($_POST["inpHora"]))
+        $textoValidacion.="<li>Debes seleccionar una hora para la asesoría</li>";
+
         if ($textoValidacion)
         {
 			return "<ul>".$textoValidacion."</ul>";
@@ -83,8 +86,10 @@
         $valores = explode('-', $fecha);
         if(count($valores) == 3 && checkdate($valores[1], $valores[2], $valores[0]))
         {
-            return true;
+            if($valores[0] < 2020 || $valores[0] > 2020)
+            {return true;}
         }
+        
         return false;
     }
 
@@ -216,18 +221,16 @@
                 ?>
                 <tr>
                     <td>
-                        <img src="<?= $asesor->fotoPerfil?>" alt="<?= "Asesor " . $asesor->nombre ?>">
+                        <img src="<?= $asesor->Foto?>" alt="<?= "Asesor " . $asesor->Nombre ?>">
                     </td>
                     <td>
                         <h6><?= $asesor->Nombre ?> <?= $asesor->Apellidos ?></h6>
                     </td>
                     <td>
-                        <li>Tema 1</li>
-                        <li>Tema 2</li>
-                        <li>Tema 3</li>
+                        <?= $asesor->TemasOfrecidos ?>
                     </td>
                     <td>
-                        <button class="btn btn-info btn-agendar" type="button" onclick="asignardatos('<?= $asesor->Nombre ?> <?= $asesor->Apellidos ?>', '<?=$asesor->idAsesor?>')" value="" data-toggle="modal" data-target="#exampleModal">
+                        <button class="btn btn-info btn-agendar" type="button" onclick="asignardatos('<?= $asesor->Nombre ?> <?= $asesor->Apellidos ?>', '<?=$asesor->IDAsesor?>')" value="" data-toggle="modal" data-target="#exampleModal">
                             AGENDAR
                         </button>                        
                     </td>
@@ -263,7 +266,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="js/bootstrapValidator.js"></script>
     <script src="sweetalert/SweetAlert2/sweetalert2.all.min.js"></script>
-    <!-- <script src="https://kit.fontawesome.com/35db202371.js"></script> -->
+    <script src="https://kit.fontawesome.com/35db202371.js"></script>
     <script src="js/seleccionar-asesor.js"></script>
 </body>
 

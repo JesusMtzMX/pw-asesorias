@@ -27,7 +27,7 @@ class Asesor_Dao
             
 			$lista = array(); /*Se declara una variable de tipo  arreglo que almacenará los registros obtenidos de la BD*/
 
-			$sentenciaSQL = $this->conexion->prepare("SELECT IDAsesor, Nombre, Apellidos, Email, ClaveAcceso, Telefono, DescripcionPerfil, TemasOfrecidos, Foto
+			$sentenciaSQL = $this->conexion->prepare("SELECT IDAsesor, Nombre, Apellidos, Email, ClaveAcceso, Telefono, DescripcionPerfil, TemasOfrecidos, Paypal, Foto
 			FROM asesores"); /*Se arma la sentencia sql para seleccionar todos los registros de la base de datos*/
 			
 			$sentenciaSQL->execute();/*Se ejecuta la sentencia sql, retorna un cursor con todos los elementos*/
@@ -45,6 +45,7 @@ class Asesor_Dao
 					$obj->Telefono = $fila->Telefono;
 					$obj->DescripcionPerfil = $fila->DescripcionPerfil;
 					$obj->TemasOfrecidos = $fila->TemasOfrecidos;
+					$obj->Paypal = $fila->Paypal;
 					$obj->Foto = $fila->Foto;
 					
 					$lista[] = $obj;
@@ -73,7 +74,7 @@ class Asesor_Dao
             
 			$registro = null; /*Se declara una variable  que almacenará el registro obtenido de la BD*/
             
-			$sentenciaSQL = $this->conexion->prepare("SELECT IDAsesor, Nombre, Apellidos, Email, ClaveAcceso, Telefono, DescripcionPerfil, TemasOfrecidos, Foto
+			$sentenciaSQL = $this->conexion->prepare("SELECT IDAsesor, Nombre, Apellidos, Email, ClaveAcceso, Telefono, DescripcionPerfil, TemasOfrecidos, Paypal, Foto
 			FROM asesores WHERE IDAsesor=?"); /*Se arma la sentencia sql para seleccionar todos los registros de la base de datos*/
 			$sentenciaSQL->execute([$IDAsesor]);/*Se ejecuta la sentencia sql, retorna un cursor con todos los elementos*/
             
@@ -89,6 +90,7 @@ class Asesor_Dao
 			$registro->Telefono = $fila->Telefono;
 			$registro->DescripcionPerfil = $fila->DescripcionPerfil;
 			$registro->TemasOfrecidos = $fila->TemasOfrecidos;
+			$registro->Paypal = $fila->Paypal;
 			$registro->Foto = $fila->Foto;
 			
 			return $registro; //Registro es un Empleado (objeto Empleado)
@@ -132,8 +134,8 @@ class Asesor_Dao
         $IDAsesor=0;
 		try 
 		{
-            $sql = "INSERT INTO asesores (IDAsesor, Nombre, Apellidos, Email, ClaveAcceso, Telefono, DescripcionPerfil, TemasOfrecidos, Foto)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO asesores (IDAsesor, Nombre, Apellidos, Email, ClaveAcceso, Telefono, DescripcionPerfil, TemasOfrecidos, Paypal, Foto)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			var_dump($sql);
 			$this->conectar();
@@ -149,6 +151,7 @@ class Asesor_Dao
 					$obj->Telefono,
 					$obj->DescripcionPerfil,
 					$obj->TemasOfrecidos,
+					$obj->Paypal,
 					$obj->Foto	
 				));
 
@@ -177,7 +180,7 @@ class Asesor_Dao
 		try 
 		{
 			$sql = "UPDATE asesores SET Nombre = ?, Apellidos = ?, Email = ?, ClaveAcceso = ?, 
-			Telefono = ?, DescripcionPerfil = ?, TemasOfrecidos = ?, Foto = ?
+			Telefono = ?, DescripcionPerfil = ?, TemasOfrecidos = ?, Paypal = ?, Foto = ?
 			WHERE IDAsesor = ?";
 
             $this->conectar();
@@ -191,6 +194,7 @@ class Asesor_Dao
 					$obj->ClaveAcceso,
 					$obj->DescripcionPerfil,
 					$obj->TemasOfrecidos,
+					$obj->Paypal,
 					$obj->Foto
 				));
 

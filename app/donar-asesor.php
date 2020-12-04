@@ -8,8 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Estilos Css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Red+Hat+Text:400,500,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/estilos-asesores.css">
@@ -48,6 +47,12 @@
 
     </header>
 
+    <?php        
+        require_once "../datos/Asesor_Dao.php";
+        $dao = new Asesor_Dao();
+        $lista = $dao->obtenerTodos();
+    ?>
+
     <div class="lista-asesores">
         <div class="agenda-titulo-asesores">
             <h1 class="text-center">DONACIÓN A ASESORES</h1>
@@ -64,37 +69,26 @@
                 <th> Donación a Paypal</th>
             </thead>
             <tbody>
+            <?php if(isset($lista))
+                {
+                    foreach ($lista as $asesor)
+                    {
+                ?>
                 <tr>
                     <td>
-                        <img src="img/asesor-1.png" alt="Alkapone">
+                        <img src="<?= $asesor->Foto?>" alt="<?= "Asesor " . $asesor->Nombre ?>">
                     </td>
                     <td>
-                        José Alejandro Leyva Uribe.
+                        <h6 class="my-3"><?= $asesor->Nombre ?> <?= $asesor->Apellidos ?></h6>
                     </td>
                     <td>
-                        <button class="btn btn-info btn-agendar" type="submit"><a href="https://www.paypal.com/mx/home"> DONAR </a></button>
+                        <a type="button"><?= $asesor->Paypal?></a>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <img src="img/asesor-2.png" alt="Musk">
-                    </td>
-                    <td> Elon Musk
-                    <td>
-                        <button class="btn btn-info btn-agendar" type="submit"><a href="https://www.paypal.com/mx/home"> DONAR </a></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="img/asesor-3.png" alt="Mark">
-                    </td>
-                    <td>
-                        Mark Zuckerberg
-                    </td>
-                    <td>
-                        <button class="btn btn-info btn-agendar" type="submit"><a href="https://www.paypal.com/mx/home"> DONAR </a></button>
-                    </td>
-                </tr>
+            <?php
+                    }
+                }
+            ?>
             </tbody>
         </table>
     </div>

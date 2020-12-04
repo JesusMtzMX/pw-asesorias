@@ -8,12 +8,13 @@ class Asesor {
     public $Telefono;
     public $DescripcionPerfil;
     public $TemasOfrecidos;
+    public $Paypal;
     public $Foto;
 
     function __construct(){}
     
     function __construct1($IDAsesor, $Nombre, $Apellidos,
-                            $Email, $ClaveAcceso, $Telefono,  $DescripcionPerfil, $TemasOfrecidos, $Foto)
+                            $Email, $ClaveAcceso, $Telefono, $DescripcionPerfil, $TemasOfrecidos, $Paypal, $Foto)
     {
         $this->IDAsesor=$IDAsesor;
         $this->Nombre=$Nombre;

@@ -2,15 +2,10 @@ let modal = document.querySelector(".modal");
 let modalTitle = document.querySelector(".modal-title");
 let btnAgendar = document.querySelector(".btn-agendar");
 let btnConfirmar = document.querySelector(".btnConfirmarAsesoria");
-let nombreAsesor = document.querySelector("#txtNombreAsesor");
-let IDAsesor = document.querySelector("#txtIDAsesor");
 
-asignardatos = (asesor, id)=>
+asignardatos = (asesor)=>
 {
-    modalTitle.innerHTML = `Asesoría con ${asesor}`;  
-    nombreAsesor.value = asesor;
-    IDAsesor.value = parseInt(id);
-    IDAsesor.hidden = true;
+    modalTitle.innerHTML = `Asesoría con ${asesor}`;    
 }
 
 btnConfirmar.addEventListener("click", ()=>{
@@ -22,25 +17,66 @@ btnConfirmar.addEventListener("click", ()=>{
     //$('.modal').modal('hide');
 });
 
-(function()
-{
-    'use strict';
-    window.addEventListener('load', function()
-    {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      let forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      let validation = Array.prototype.filter.call(forms, function(form)
-      {
-        form.addEventListener('submit', function(event)
-        {
-          if (form.checkValidity() === false)
-          {
-            event.preventDefault();
-            event.stopPropagation();
+$(document).ready(function(){
+  //$("li.active").removeClass("active");
+  //$("#mnuProductos").addClass("active");
+
+  $('#frmAsesoria').bootstrapValidator({
+      fields: {
+        txtIDAsesorado:{
+              validators:{
+                  notEmpty: {
+                      message: 'El nombre del solicitante (asesorado) es obligatorio'
+                  },
+                  stringLength: {
+                      message: 'Debe tener entre 10 y 40 caracteres',
+                      min:10,
+                      max:40,
+                      trim: true
+                  }
+              }
+          },
+          txtTemaAsesoria:{
+              validators:{
+                  notEmpty: {
+                      message: 'El tema es un dato requerido'
+                  },
+                  stringLength: {
+                    message: 'Especifica el tema con un mínimo de 4 carácteres',
+                    min:4,
+                    max:40,
+                    trim: true
+                }
+              }
+          },
+          txtAreaEstudio:{
+              validators:{
+                  notEmpty: {
+                      message: 'El área o ámbito es un dato requerido'
+                  },
+                  stringLength: {
+                    message: 'Especifica el área o ámbito con un mínimo de 4 carácteres',
+                    min:4,
+                    max:40,
+                    trim: true
+                }
+              }
+          },
+          inpFecha:{
+            validators:{
+                notEmpty: {
+                    message: 'Especifica la fecha de la asesoría'
+                }                
+            }
+          },
+          inpHora:{
+            validators:{
+                notEmpty: {
+                    message: 'Especifica la hora de la asesoría'
+                },                
+            }
           }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
+
+      } //Fields
+  }); //Validator
+}); //ready

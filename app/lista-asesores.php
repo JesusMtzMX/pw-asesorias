@@ -86,13 +86,13 @@
                 ?>
                 <tr>
                     <td>
-                        <img src="<?= $asesor->fotoPerfil?>" alt="<?= "Asesor " . $asesor->nombre ?>">
+                        <img src="<?= $asesor->Foto?>" alt="<?= "Asesor " . $asesor->Nombre ?>">
                     </td>
                     <td>
-                        <h6><?= $asesor->Nombre ?> <?= $asesor->Apellidos ?></h6>
+                        <h6 class="my-3"><?= $asesor->Nombre ?> <?= $asesor->Apellidos ?></h6>
                     </td>
                     <td>
-                        Descripción del perfil profesional
+                        <p class="my-3"><?= $asesor->DescripcionPerfil ?></p>
                     </td>
                 </tr>
             <?php
