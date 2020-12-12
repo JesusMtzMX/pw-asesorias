@@ -10,29 +10,45 @@
     <div class="IS.jpg">
       <div class="content">
         <header id="header">Registrarse como ASESOR</header>
-        <form action="#">
+        <form action="../datos/RegistroAsesor.php" method="POST" >
         <div class="field">
-              <span class="fa fa-user"></span>
-              <input type="text" required placeholder="Nombre">
+        <span class="fa fa-user"></span>
+              <input type="text"  placeholder="Nombre" name="Nombre">
             </div>
             <div class="field space">
               <span class="fa fa-user"></span>
-              <input type="text" required placeholder="Apellidos">
+              <input type="text"  placeholder="Apellidos" name="Apellidos">
             </div>
             <div class="field space">
               <span class="fa fa-lock"></span>
-              <input type="email" class="" required placeholder="Email">
+              <input type="email" class=""  placeholder="Email" name="Email">
             </div>
             <div class="field space">
               <span class="fa fa-lock"></span>
-              <input type="password" class="pass-key" required placeholder="Clave Acceso">
+              <input type="password" class="pass-key"  placeholder="ClaveAcceso" name="ClaveAcceso">
             </div>
             <div class="field space">
               <span class="fa fa-lock"></span>
-              <input type="number" class="pass-key" required placeholder="Teléfono">
+              <input type="number"   placeholder="Teléfono" name="Telefono">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="text"  placeholder="DescripcionPerfil" name="DescripcionPerfil">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="text"  placeholder="TemasOfrecidos" name="TemasOfrecidos">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="text"  placeholder="LINK Paypal" name="Paypal">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="text" name="Foto" id="Foto">
             </div><br>
           <div class="field space">
-            <input type="submit" value="REGISTRARSE">
+            <input type="submit" value="REGISTRARSE" id="btnAsesor">
           </div><br>
           <a href="iniciar_sesion.php">Volver</a>
         </form>
@@ -40,30 +56,34 @@
           <p>&copy; Agencia de asesorías web - 2020</p>
         </div>
         <div class="content2">
-          <header id="header">Registrarse como ESTUDIANTE</header>
-          <form action="#">
+          <header id="header">Registrarse como ASESORADO</header>
+          <form action="../datos/Registrar.php" method="POST" >
           <div class="field">
               <span class="fa fa-user"></span>
-              <input type="text" required placeholder="Nombre">
+              <input type="text"  placeholder="Nombre" name="Nombre">
             </div>
             <div class="field space">
               <span class="fa fa-user"></span>
-              <input type="text" required placeholder="Apellidos">
+              <input type="text"  placeholder="Apellidos" name="Apellidos">
             </div>
             <div class="field space">
               <span class="fa fa-lock"></span>
-              <input type="email" class="" required placeholder="Email">
+              <input type="email" class=""  placeholder="Email" name="Email">
             </div>
             <div class="field space">
               <span class="fa fa-lock"></span>
-              <input type="password" class="pass-key" required placeholder="Contraseña">
+              <input type="password" class="pass-key"  placeholder="ClaveAcceso" name="ClaveAcceso">
             </div>
             <div class="field space">
               <span class="fa fa-lock"></span>
-              <input type="number" class="pass-key" required placeholder="Teléfono">
+              <input type="number"   placeholder="Teléfono" name="Telefono">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="text" name="Foto" id="Foto">
             </div><br>
             <div class="field space">
-              <input type="submit" value="REGISTRARSE">
+              <input type="submit" value="REGISTRARSE" id="btnAsesorado">
             </div><br>
             <a href="iniciar_sesion.php">Volver</a>
           </form>

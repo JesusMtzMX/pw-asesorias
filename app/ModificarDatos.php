@@ -6,8 +6,12 @@
   <title>Editar perfil</title>
   <link rel="stylesheet" href="css/StyleModificarDatos.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-</head>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
+</head>
+<?php
+      require_once "menu_inicial.php";
+    ?>
 <body background="img/perfil.jpg">
 
   <div class="container" id="body">
@@ -53,6 +57,8 @@
           <p>&copy; Agencia de asesorías web - 2020</p>
         </div>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
 
     <script src="scriptsRegistro.js"></script>
 </body>
