@@ -57,6 +57,22 @@
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"></script>
-    <script src="js/mi-agenda.js"></script>
+    
+
+  <?php
+    if (session_id() === 'Asesor')
+    {
+  ?>
+      <script src="js/mi-agenda.js"></script>
+  <?php
+    }
+    else if (session_id() === 'Asesorado')
+    {     
+  ?>
+    <script src="js/mi-agenda-asesorado.js"></script>    
+  <?php
+    }
+  ?>
+
 </body>
 </html>

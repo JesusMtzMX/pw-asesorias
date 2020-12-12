@@ -44,7 +44,7 @@ $(document).ready(function(){
                 });
             });
         },
-        'aoColumnDefs': [{ 'bSortable': false, 'aTargets': 6 },
+        'aoColumnDefs': [
                         {'targets': [2,3], 'className': 'text-right'},
                         {'targets': 4, 'className': 'text-center'}
         ],

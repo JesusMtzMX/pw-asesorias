@@ -4,13 +4,6 @@ $(document).ready(function()
     let idTabla="#tblAgendar";
     $("#tblAgendar").DataTable({
         "fnRowCallback": function (nRow, data, iDisplayIndex) {
-            // if(data[4]==1){
-            //     $('td', nRow).addClass('table-danger');
-            //     $('td:eq(4)', nRow).text("SI");
-            // }else{
-            //     $('td:eq(4)', nRow).text("NO");
-            // }
-
         },
         "fnInitComplete": function (oSettings, json) {
             /*Configuración de los filtros individuales*/
@@ -28,6 +21,8 @@ $(document).ready(function()
             
             //Quitar filtro en la ultima columna (la de operaciones)
             $(fila).children("th:last").html('');
+
+            $(fila).children("th:first").html('');
             
             let tabla = this;
             //Activa el filtrado
@@ -41,9 +36,10 @@ $(document).ready(function()
                 });
             });
         },
-        'aoColumnDefs': [{ 'bSortable': false, 'aTargets': 5 },
-                        {'targets': [2,3], 'className': 'text-right'},
-                        {'targets': 4, 'className': 'text-center'}
+        'aoColumnDefs': [{ 'bSortable': false, 'aTargets': 0 },
+                        { 'bSortable': false, 'aTargets': 3 },
+        //                 {'targets': [2,3], 'className': 'text-right'},
+        //                 {'targets': 4, 'className': 'text-center'}
         ],
         'order': [[1, 'asc'],[0, 'asc']],
         'language': {'url':'http://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'}
