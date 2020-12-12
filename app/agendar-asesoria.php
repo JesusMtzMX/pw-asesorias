@@ -8,11 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Estilos Css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Red+Hat+Text:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
     <link rel="stylesheet" href="sweetalert/SweetAlert2/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/estilos-asesores.css">
 
@@ -27,7 +30,7 @@
 
     <!-- Menu de Navegacion -->
     <header id="header">
-    <?php
+        <?php
         session_start();
 
         if (session_id() === 'Asesor')
@@ -44,7 +47,7 @@
         }
     ?>
 
-<?php
+        <?php
     $asesoria = null;
     $msgError=null;
     $validacion=null;    
@@ -160,59 +163,63 @@
     }
 ?>
 
-    <!-- <div class="skew-abajo">
+        <!-- <div class="skew-abajo">
     </div> -->
 
     </header>
 
-    <div class="lista-asesores">
+    <div class="container lista-asesores">
         <div class="agenda-titulo-asesores">
             <h1 class="text-center">ASESORES</h1>
             <br>
         </div>
         <br>
-    <?php 
+        <?php 
         if($msgError)
         {
-    ?>
+        ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong><?= $msgError?></strong> <?= $validacion ?> <?= $_POST['inpFecha'] ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-    <?php        
+        <?php        
         }
         if(isset($_SESSION["msg"]))
         {
-    ?>
+        ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong><?= $_SESSION["msg"] ?></strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-    <?php        
+        <?php        
         }
         $msgError = "";
         $validacion = "";
         $_SESSION["msg"] = null;
-    ?>
+        ?>
 
-    <?php
+        <?php
         include 'modal-agendar.php';
         require_once "../datos/Asesor_Dao.php";
         $dao = new Asesor_Dao();
         $lista = $dao->obtenerTodos();
 
-    ?>
-        <table class="table tabla-agenda-asesores">
-            <thead>
-                <th> Foto perfil </th>
-                <th> Nombre </th>
-                <th> Temas ofrecidos</th>
-                <th> Agendar</th>
+        ?>
+        <table id="tblAgendar" class="table table-striped table-bordered table-hover">
+
+            <thead class="thead-dark text-light">
+                <tr>
+                    <th> Foto perfil </th>
+                    <th> Nombre </th>
+                    <th> Temas ofrecidos</th>
+                    <th> Agendar</th>
+                </tr>
             </thead>
+
             <tbody>
                 <?php if(isset($lista))
                 {
@@ -221,52 +228,53 @@
                 ?>
                 <tr>
                     <td>
-                        
+                        <p>Foto Perfil</p>
                     </td>
                     <td>
                         <h6><?= $asesor->Nombre ?> <?= $asesor->Apellidos ?></h6>
                     </td>
                     <td>
-                        <?= $asesor->TemasOfrecidos ?>
+                        <?=$asesor->TemasOfrecidos?>
                     </td>
                     <td>
-                        <button class="btn btn-info btn-agendar" type="button" onclick="asignardatos('<?= $asesor->Nombre ?> <?= $asesor->Apellidos ?>', '<?=$asesor->IDAsesor?>')" value="" data-toggle="modal" data-target="#exampleModal">
+                        <button class="btn btn-info btn-agendar" type="button"
+                            onclick="asignardatos('<?= $asesor->Nombre ?> <?= $asesor->Apellidos ?>', '<?=$asesor->IDAsesor?>')"
+                            value="" data-toggle="modal" data-target="#exampleModal">
                             AGENDAR
-                        </button>                        
+                        </button>
                     </td>
                 </tr>
-            <?php
+                <?php
                     }
                 }
-            ?>
+                ?>
             </tbody>
         </table>
     </div>
-    </main>    
 
     <footer class="footer">
         <div class="skew-arriba"></div>
         <div class="deg-footer"></div>
-    
-        <div class="ejeZfooter">
-          <div class="footer-content">
-               
-            <div class="footer-text">
-              <p>&copy; Agencia de asesorías web - 2020</p>
-            </div>
-    
-          </div>
-        </div>
-      </footer>
 
-    <!-- Scripts -->    
+        <div class="ejeZfooter">
+            <div class="footer-content">
+
+                <div class="footer-text">
+                    <p>&copy; Agencia de asesorías web - 2020</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="js/jquery-3.5.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"></script>
+
     <script src="js/bootstrapValidator.js"></script>
-    <script src="sweetalert/SweetAlert2/sweetalert2.all.min.js"></script>
-    <script src="https://kit.fontawesome.com/35db202371.js"></script>
     <script src="js/seleccionar-asesor.js"></script>
 </body>
 

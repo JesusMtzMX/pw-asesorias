@@ -197,38 +197,82 @@ class Asesoria_Dao
 
 	public function obtenerAsesoriasUsuario($IDAsesorado)
 	{
+		require_once '../modelo/Detalle_Asesoria.php';
+
 		try
 		{
             $this->conectar();
             
 			$lista = array();
 
-			$sentenciaSQL = $this->conexion->prepare
-			("SELECT CONCAT(asesores.Nombre, ' ', asesores.Apellidos) Asesor, CONCAT(asesorados.Nombre, ' ', asesorados.Apellidos) Asesorado,
-			asesorias.Tema, asesorias.AreaEstudio, asesorias.Fecha, asesorias.Hora, asesorias.Estatus
+			$sentenciaSQL = $this->conexion->prepare("SELECT CONCAT(asesores.Nombre, ' ', asesores.Apellidos) Asesor, CONCAT(asesorados.Nombre, ' ', asesorados.Apellidos) Asesorado, asesorias.Tema Tema, asesorias.AreaEstudio Area, asesorias.Fecha Fecha, asesorias.Hora Hora, asesorias.Estatus Estatus
 			FROM asesorias
 			INNER JOIN asesorados ON asesorias.IDAsesorado = asesorados.IDAsesorado
-			INNER JOIN asesores ON asesorias.IDAsesor = asesores.IDAsesor WHERE asesorados.IDAsesorado = '?';
-			");
+			INNER JOIN asesores ON asesorias.IDAsesor = asesores.IDAsesor WHERE asesorados.IDAsesorado = ?;");
 			
 			$sentenciaSQL->execute([$IDAsesorado]);
             
 			foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila)
 			{
-				$obj = array(
-					$fila->Asesor,
-					$fila->Asesorado,
-					$fila->Tema,
-					$fila->AreaEstudio,
-					$fila->Fecha,
-					$fila->Hora,
-					$fila->Estatus
-				);
+				$obj = new Detalle_Asesoria();
+
+				$obj->Asesor = $fila->Asesor;
+				$obj->Asesorado = $fila->Asesorado;
+				$obj->Tema = $fila->Tema;
+				$obj->Area = $fila->Area;
+				$obj->Fecha = $fila->Fecha;
+				$obj->Hora = $fila->Hora;
+				$obj->Estatus = $fila->Estatus;
 				
-				array_push($lista, $obj);
+				$lista[] = $obj;
 			}
             
-			return $lista;
+			return $lista;			
+		}
+		catch(Exception $e)
+		{
+			echo $e->getMessage();
+			return null;
+		}
+		finally
+		{
+            Conexion::cerrarConexion();
+        }
+	}
+
+	public function obtenerAsesoriasAsesor($IDAsesor)
+	{
+		require_once '../modelo/Detalle_Asesoria.php';
+
+		try
+		{
+            $this->conectar();
+            
+			$lista = array();
+
+			$sentenciaSQL = $this->conexion->prepare("SELECT CONCAT(asesores.Nombre, ' ', asesores.Apellidos) Asesor, CONCAT(asesorados.Nombre, ' ', asesorados.Apellidos) Asesorado, asesorias.Tema Tema, asesorias.AreaEstudio Area, asesorias.Fecha Fecha, asesorias.Hora Hora, asesorias.Estatus Estatus
+			FROM asesorias
+			INNER JOIN asesorados ON asesorias.IDAsesorado = asesorados.IDAsesorado
+			INNER JOIN asesores ON asesorias.IDAsesor = asesores.IDAsesor WHERE asesores.IDAsesor = ?;");
+			
+			$sentenciaSQL->execute([$IDAsesor]);
+            
+			foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila)
+			{
+				$obj = new Detalle_Asesoria();
+
+				$obj->Asesor = $fila->Asesor;
+				$obj->Asesorado = $fila->Asesorado;
+				$obj->Tema = $fila->Tema;
+				$obj->Area = $fila->Area;
+				$obj->Fecha = $fila->Fecha;
+				$obj->Hora = $fila->Hora;
+				$obj->Estatus = $fila->Estatus;
+				
+				$lista[] = $obj;
+			}
+            
+			return $lista;			
 		}
 		catch(Exception $e)
 		{
