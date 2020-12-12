@@ -25,6 +25,7 @@
 
         }catch(Exception $e){
             $_SESSION["success"]="registrado";
+            header
         } 
 
       }  else{
