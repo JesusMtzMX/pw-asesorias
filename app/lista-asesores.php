@@ -89,7 +89,7 @@
                 ?>
                 <tr>
                     <td>
-                        <img src="<?= $asesor->Foto?>" alt="<?= "Asesor " . $asesor->Nombre ?>">
+                        <img src="<?= $lista->asesor="Foto"?>"  ?>
                     </td>
                     <td>
                         <h6 class="my-3"><?= $asesor->Nombre ?> <?= $asesor->Apellidos ?></h6>
@@ -105,7 +105,9 @@
             </tbody>
         </table>
     </div>
-
+    <div class="text-center">
+            <button class="btn btn-info btn-agendar"> REPORTAR ASESOR </a>  </button>
+        </div>
     <div class="agendar">
         <div class="titulo-agendar">
             <h2 class="text-center">¿Te interesa agendar alguna asesoría en línea?</h2>

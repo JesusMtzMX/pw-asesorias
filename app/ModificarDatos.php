@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Editar perfil</title>
-  <link rel="stylesheet" href="css/StyleModificarDatos.css">
+  <link rel="stylesheet" href="css/StyleRegistro.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
@@ -16,62 +16,37 @@
 
   <div class="container" id="body">
 
-    <div class="header">
-      <h2>Editar perfil</h2>
-    </div>
-
+  <header id="header">Editar dato</header>
+        <form action="../datos/modificar.php" method="POST" id="form" class="form">
+    <div class="content"> 
+        <div class="field">
+        <span class="fa fa-user"></span>
+              <input type="text"  placeholder="Nombre" name="Nombre">
+            </div>
+            <div class="field space">
+              <span class="fa fa-user"></span>
+              <input type="text"  placeholder="Apellidos" name="Apellidos">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="email" class=""  placeholder="Email" name="Email">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="password" class="pass-key"  placeholder="ClaveAcceso" name="ClaveAcceso">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="number"   placeholder="Teléfono" name="Telefono">
+            </div>
+        
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="File" name="Foto" id="Foto">
+            </div>
+            <input type="submit" value="EDITAR " name="btnEditar">
     
-    <form action="../datos/modificar.php" method="POST" id="form" class="form">
-      <div class="form-control">
-        <label for="username">Nuevo nombre</label>
-        <input type="text" placeholder="Esmeralduchi22" id="Nombre" name="Nombre" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error</small>
-      </div>
-      
-      <div class="form-control">
-        <label for="username">Nuevos Apellidos</label>
-        <input type="text" placeholder="Esmeralduchi22" id="Nombre" name="Apellidos" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error</small>
-      </div>
-      
-
-      <div class="form-control">
-        <label for="username">Nuevo email</label>
-        <input type="email" placeholder="esmelopez536@gmail.com" id="Email" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error</small>
-      </div>
-
-      
-      
-      <div class="form-control">
-        <label for="username">Nueva Contraseña</label>
-        <input type="password" placeholder="Contraseña" id="password" name="ClaveAcceso"/>
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error</small>
-      </div>
-      <div class="form-control">
-        <label for="username">Nuevo Telefono</label>
-        <input type="text" placeholder="Esmeralduchi22" id="Telefono" name="Telefono" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error</small>
-        <div class="form-control">
-        <label for="username">Nueva Foto</label>
-        <input type="text" placeholder="Esmeralduchi22" id="Foto" name="Foto" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error</small>
-      </div>
-      </div>
-      <input type="submit" value="EDITAR " name="btnEditar">
-     <div> <a>--></a><a href="index.php "> Volver</a></div>
+      <div> <a>--></a><a href="index.php "> Volver</a></div>
       <div class="footer-text">
           <p>&copy; Agencia de asesorías web - 2020</p>
         </div>

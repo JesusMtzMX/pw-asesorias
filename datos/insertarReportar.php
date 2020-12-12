@@ -17,11 +17,12 @@
         try{
            $dao->agregar($reporte);
          // var_dump($_POST);
-             header("location: ../app/index.php");
+            header("location: ../app/iniciar_sesion.php");
+            
         }catch(Exception $e){
             $_SESSION["success"]="registrado";
             
-            
+            header("location: ../app/index.php");
         } 
        
 

@@ -15,15 +15,14 @@ if(isset($_POST["btnasesor"])){
     $asesor->Telefono = $_POST["Telefono"];
     $asesor->DescripcionPerfil=$_POST["DescripcionPerfil"];
     $asesor->TemasOfrecidos=$_POST["TemasOfrecidos"];
-    $asesor->Foto=$_POST["Foto"];
+    $asesor->Foto=$_POST["Foto"]
     $asesor->Paypal=$_POST["Paypal"];
-  
 
     try{
        $dao->agregar($asesor);
      // var_dump($_POST);
         header("location: ../app/iniciar_sesion.php");
-        require_once 'menu_asesor.php'
+     //   require_once 'menu_asesor.php'
     }catch(Exception $e){
         $_SESSION["success"]="registrado";
         
