@@ -10,7 +10,10 @@
 
       <li><a href="index.php">Inicio</a></li>
 
-      <li><a href="index.php#lista-cursos">Cursos</a></li>      
+      <li><a href="index.php#lista-cursos">Cursos</a></li>   
+      <li><a href="ModificarDatos.php">Editar perfil</a></li>   
+      
+
 
       <li class="nav-item dropdown">
 

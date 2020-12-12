@@ -20,39 +20,58 @@
       <h2>Editar perfil</h2>
     </div>
 
-    <form id="form" class="form">
-
+    
+    <form action="../datos/modificar.php" method="POST" id="form" class="form">
       <div class="form-control">
-        <label for="username">Nuevo usuario</label>
-        <input type="text" placeholder="Esmeralduchi22" id="username" />
+        <label for="username">Nuevo nombre</label>
+        <input type="text" placeholder="Esmeralduchi22" id="Nombre" name="Nombre" />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>Error</small>
       </div>
+      
+      <div class="form-control">
+        <label for="username">Nuevos Apellidos</label>
+        <input type="text" placeholder="Esmeralduchi22" id="Nombre" name="Apellidos" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error</small>
+      </div>
+      
 
       <div class="form-control">
         <label for="username">Nuevo email</label>
-        <input type="email" placeholder="esmelopez536@gmail.com" id="email" />
+        <input type="email" placeholder="esmelopez536@gmail.com" id="Email" />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>Error</small>
       </div>
 
+      
+      
       <div class="form-control">
         <label for="username">Nueva Contraseña</label>
-        <input type="password" placeholder="Contraseña" id="password" />
+        <input type="password" placeholder="Contraseña" id="password" name="ClaveAcceso"/>
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>Error</small>
       </div>
-
       <div class="form-control">
-        <label for="username">Confirmar contraseña</label>
-        <input type="password" placeholder="Confirmar contraseña" id="password2" />
+        <label for="username">Nuevo Telefono</label>
+        <input type="text" placeholder="Esmeralduchi22" id="Telefono" name="Telefono" />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>Error</small>
-      </div><input type="submit" value="INICIAR SESION "><a>--></a><a href="index.php "> Volver</a>
+        <div class="form-control">
+        <label for="username">Nueva Foto</label>
+        <input type="text" placeholder="Esmeralduchi22" id="Foto" name="Foto" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error</small>
+      </div>
+      </div>
+      <input type="submit" value="EDITAR " name="btnEditar">
+     <div> <a>--></a><a href="index.php "> Volver</a></div>
       <div class="footer-text">
           <p>&copy; Agencia de asesorías web - 2020</p>
         </div>

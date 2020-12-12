@@ -94,6 +94,9 @@ abajo.addEventListener('click', () => {
 
 let btnEnviarComentario = document.querySelector('#btnEnviarComentario');
 
+let btnasesor = document.querySelector('#btnEasesor');
+
+
 function enviarComentario()
 {
   Swal.fire(
@@ -101,6 +104,7 @@ function enviarComentario()
     '¡Muchas gracias! Su comentario ha sido enviado.',
     'success'
 )
+
 }
 
 

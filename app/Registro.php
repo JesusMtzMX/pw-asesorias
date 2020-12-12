@@ -51,14 +51,14 @@
             </div>
             <div class="field space">
               <span class="fa fa-lock"></span>
-              <input type="text"  placeholder="LINK Paypal" name="Paypal">
+              <input type="text" name="Foto" id="Foto">
             </div>
             <div class="field space">
               <span class="fa fa-lock"></span>
-              <input type="text" name="Foto" id="Foto">
+              <input type="text"  placeholder="LINK Paypal" name="Paypal">
             </div><br>
           <div class="field space">
-            <input type="submit" value="REGISTRARSE" id="btnAsesor">
+            <input type="submit" value="REGISTRARSE" name="btnasesor" id="btnasesor" onclick="insertarAsesorado()">
             
           </div><br>
           <a href="../app/iniciar_sesion.php">Volver</a>
@@ -94,10 +94,8 @@
               <input type="text" name="Foto" id="Foto">
             </div><br>
             <div class="field space">
-              <input type="submit" value="REGISTRARSE" id="btnAsesorado">
-              <?php
-              require_once "menu_inicial.php";
-             ?>
+              <input type="submit" value="REGISTRARSE" name="btnAsesorado">
+         
             </div><br>
             <a href="../app/iniciar_sesion.php">Volver</a>
           </form>
@@ -113,6 +111,7 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 
+      <script src="js/app.js"></script>
   </body>
   
 </html>

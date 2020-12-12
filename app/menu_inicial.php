@@ -12,6 +12,7 @@
 
       <li><a href="iniciar_sesion.php">Iniciar Sesión</a></li>
       <li><a href="Registro.php">Crear cuenta</a></li>      
+     
       <li><a href="index.php#lista-cursos">Cursos</a></li>
       <li><a href="index.php#acerca-de">Acerca de</a></li>
       

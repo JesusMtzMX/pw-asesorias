@@ -8,22 +8,27 @@
     $dao = new Asesorado_Dao();
     $asesorado = new Asesorado();
 
-    if(isset($_POST["btn-asesorado"])){
-
+    if(isset($_POST["btnAsesorado"])){
         
-        $Asesorado->Nombre=$_POST['Nombre'];
-        $Asesorado->Apellidos=$_POST['Aellidos'];
-        $Asesorado->Email = $_POST['Email'];
-        $Asesorado->ClaveAcceso = $_POST['ClaveAcceso'];
-        $Asesorado->Telefono=$_POST['Telefono'];
-        $Asesorado->Foto=$_POST['Foto'];
-
+        $asesorado->Nombre=$_POST["Nombre"];
+        $asesorado->Apellidos=$_POST["Apellidos"];
+        $asesorado->Email = $_POST["Email"];
+        $asesorado->ClaveAcceso = $_POST["ClaveAcceso"];
+        $asesorado->Telefono=$_POST["Telefono"];
+        $asesorado->Foto=$_POST["Foto"];
+       
         try{
-            $dao->agregar($Asesorado);
-
+           $dao->agregar($asesorado);
+         // var_dump($_POST);
+       
+            header("location: ../app/iniciar_sesion.php");
+            
         }catch(Exception $e){
             $_SESSION["success"]="registrado";
+            
+            header("location: ../app/index.php");
         } 
+       
 
       }  else{
         $_SESSION["error"]=" no registrado";
