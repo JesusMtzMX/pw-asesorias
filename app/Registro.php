@@ -5,6 +5,14 @@
     <title>Crear cuenta</title>
     <link rel="stylesheet" href="css/StyleRegistro.css">
    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</head>
+<?php
+      require_once "menu_inicial.php";
+    ?>
+
   </head>
   <body background="IS.jpg">
     <div class="IS.jpg">
@@ -91,7 +99,8 @@
           <p>&copy; Agencia de asesorías web - 2020</p>
         </div>
     </div>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
   </body>
   
 </html>
