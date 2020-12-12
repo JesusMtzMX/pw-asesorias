@@ -1,25 +1,63 @@
-let modal = document.querySelector(".modal");
-let modalTitle = document.querySelector(".modal-title");
-let btnAgendar = document.querySelector(".btn-agendar");
-let btnConfirmar = document.querySelector(".btnConfirmarAsesoria");
-
-asignardatos = (asesor)=>
+$(document).ready(function()
 {
-    modalTitle.innerHTML = `Asesoría con ${asesor}`;    
-}
 
-btnConfirmar.addEventListener("click", ()=>{
-    // Swal.fire(
-    //     'Asesoría guardada',
-    //     'Se lo haremos saber a tu asesor.',
-    //     'success'
-    // );
-    //$('.modal').modal('hide');
-});
+    let idTabla="#tblAgendar";
+    $("#tblAgendar").DataTable({
+        "fnRowCallback": function (nRow, data, iDisplayIndex) {
+            // if(data[4]==1){
+            //     $('td', nRow).addClass('table-danger');
+            //     $('td:eq(4)', nRow).text("SI");
+            // }else{
+            //     $('td:eq(4)', nRow).text("NO");
+            // }
 
-$(document).ready(function(){
-  //$("li.active").removeClass("active");
-  //$("#mnuProductos").addClass("active");
+        },
+        "fnInitComplete": function (oSettings, json) {
+            /*Configuración de los filtros individuales*/
+            var fila = $(this).children("thead").children("tr").clone();
+            var pie = $("<tfoot/>").append(fila).css("display", "table-header-group");
+            $(this).children("thead").after(pie);
+            $(fila).children().each(function () {
+                $(this).prop("class", null);
+            });
+
+            $(fila).children("th").each(function () {
+                var title = $(this).text().toLowerCase();
+                $(this).html('<input type="text" class="filtro form-control input-sm" style="width:90%;" placeholder="Buscar ' + title + '" />');
+            });
+            
+            //Quitar filtro en la ultima columna (la de operaciones)
+            $(fila).children("th:last").html('');
+            
+            let tabla = this;
+            //Activa el filtrado
+            tabla.api().columns().eq(0).each(function (colIdx) {
+                $(idTabla + ' tfoot th:eq(' + colIdx + ') input').on('keyup change', function () {
+                    tabla.api().column(colIdx).search(this.value).draw();
+                });
+
+                $('input', tabla.api().column(colIdx).footer()).on('click', function (e) {
+                    e.stopPropagation();
+                });
+            });
+        },
+        'aoColumnDefs': [{ 'bSortable': false, 'aTargets': 5 },
+                        {'targets': [2,3], 'className': 'text-right'},
+                        {'targets': 4, 'className': 'text-center'}
+        ],
+        'order': [[1, 'asc'],[0, 'asc']],
+        'language': {'url':'http://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'}
+    });
+
+    let modalTitle = document.querySelector(".modal-title");
+
+    let idAsesor = document.querySelector("#txtIDAsesor");
+
+    asignardatos = (asesor, id)=>
+    {
+        modalTitle.innerHTML = `Asesoría con ${asesor} ${id}`;
+        idAsesor.value = id;    
+    }
 
   $('#frmAsesoria').bootstrapValidator({
       fields: {

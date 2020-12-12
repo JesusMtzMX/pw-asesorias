@@ -8,17 +8,17 @@
 
     <ul class="lists">
 
-      <li><a href="index.php" class="active">Inicio</a></li>
+      <li class="active"><a href="index.php">Inicio</a></li>
 
       <li><a href="mis-cursos.php">Mis cursos</a></li>
 
-      <li><a href="mi-agenda.php">Agenda</a></li>
+      <li><a href="mi-agenda.php" id="menuAgenda">Agenda</a></li>
 
       <li><a href="chat-asesor.php">Chat</a></li>      
 
       <li class="nav-item dropdown">
 
-        <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+        <a class="dropdown-toggle" id="navAsesores" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Asesores</a>
 
         <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">

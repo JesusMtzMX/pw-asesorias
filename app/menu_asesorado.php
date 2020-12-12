@@ -28,7 +28,7 @@
 
       <li><a href="chat-asesor.php">Chat</a></li>
 
-      <li><a href="mi-agenda.php">Ver mi agenda</a></li>
+      <li><a href="mi-agenda.php" id="menuAgenda">Ver mi agenda</a></li>
 
       <li class="nav-item dropdown">
 
