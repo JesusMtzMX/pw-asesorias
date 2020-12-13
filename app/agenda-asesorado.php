@@ -13,8 +13,7 @@
                 <th> Área</th>
                 <th> Fecha</th>
                 <th> Hora</th>
-                <th> Estatus</th>
-                <th> Acciones </th>
+                <th> Estatus</th>                
             </tr>
         </thead>
         <tbody>
@@ -41,12 +40,21 @@
                 <td>
                     <?= $fila->Hora?>
                 </td>
-                <td>
-                    <?= $fila->Estatus?>
+                <td>                    
+                    <?php
+                        if($fila->Estatus == 'Pospuesta')
+                        {
+                            echo'Pendiente';
+                        }
+                        else
+                        {
+                            echo $fila->Estatus;
+                        }
+                    ?> 
                 </td>
-                <td>
+                <!-- <td>
                     <button type="button" class="btn btn-outline-danger rounded-circle"><i class="fas fa-trash-alt"></i></button>
-                </td>
+                </td> -->
             </tr>
         <?php
                 }

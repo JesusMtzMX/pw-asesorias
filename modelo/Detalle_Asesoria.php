@@ -1,5 +1,6 @@
 <?php
 class Detalle_Asesoria {
+    public $IDAsesoria;
     public $Asesor;
     public $Asesorado;
     public $Tema;
@@ -10,8 +11,9 @@ class Detalle_Asesoria {
 
     function __construct(){}
     
-    function __construct1($Asesor, $Asesorado, $Tema, $Area, $Fecha, $Hora, $Estatus)
+    function __construct1($IDAsesoria, $Asesor, $Asesorado, $Tema, $Area, $Fecha, $Hora, $Estatus)
     {
+        $this->IDAsesoria=$IDAsesoria;
         $this->Asesor=$Asesor;
         $this->Asesorado=$Asesorado;
         $this->Tema=$Tema;

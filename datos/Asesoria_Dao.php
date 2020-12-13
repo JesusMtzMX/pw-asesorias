@@ -73,7 +73,7 @@ class Asesoria_Dao
 			$sentenciaSQL = $this->conexion->prepare("SELECT IDAsesoria, IDAsesor, IDAsesorado, Tema, AreaEstudio, Fecha, Hora, Estatus
 			FROM asesorias WHERE IDAsesoria = ?"); /*Se arma la sentencia sql para seleccionar todos los registros de la base de datos*/
 			
-			$sentenciaSQL->execute([$id]);/*Se ejecuta la sentencia sql, retorna un cursor con todos los elementos*/
+			$sentenciaSQL->execute([$IDAsesoria]);/*Se ejecuta la sentencia sql, retorna un cursor con todos los elementos*/
             
             /*Obtiene los datos*/
 			$fila=$sentenciaSQL->fetch(PDO::FETCH_OBJ);
@@ -250,7 +250,7 @@ class Asesoria_Dao
             
 			$lista = array();
 
-			$sentenciaSQL = $this->conexion->prepare("SELECT CONCAT(asesores.Nombre, ' ', asesores.Apellidos) Asesor, CONCAT(asesorados.Nombre, ' ', asesorados.Apellidos) Asesorado, asesorias.Tema Tema, asesorias.AreaEstudio Area, asesorias.Fecha Fecha, asesorias.Hora Hora, asesorias.Estatus Estatus
+			$sentenciaSQL = $this->conexion->prepare("SELECT  IDAsesoria, CONCAT(asesores.Nombre, ' ', asesores.Apellidos) Asesor, CONCAT(asesorados.Nombre, ' ', asesorados.Apellidos) Asesorado, asesorias.Tema Tema, asesorias.AreaEstudio Area, asesorias.Fecha Fecha, asesorias.Hora Hora, asesorias.Estatus Estatus
 			FROM asesorias
 			INNER JOIN asesorados ON asesorias.IDAsesorado = asesorados.IDAsesorado
 			INNER JOIN asesores ON asesorias.IDAsesor = asesores.IDAsesor WHERE asesores.IDAsesor = ?;");
@@ -261,6 +261,7 @@ class Asesoria_Dao
 			{
 				$obj = new Detalle_Asesoria();
 
+				$obj->IDAsesoria = $fila->IDAsesoria;
 				$obj->Asesor = $fila->Asesor;
 				$obj->Asesorado = $fila->Asesorado;
 				$obj->Tema = $fila->Tema;
@@ -284,5 +285,30 @@ class Asesoria_Dao
             Conexion::cerrarConexion();
         }
 	}
+
+	public function editarEstatus($IDAsesoria, $Estatus)
+	{
+		try 
+		{
+			$sql = "UPDATE asesorias SET Estatus = ?
+				WHERE IDAsesoria = ?";
+
+            $this->conectar();
+            
+            $sentenciaSQL = $this->conexion->prepare($sql);			          
+			$sentenciaSQL->execute([$Estatus, $IDAsesoria]);
+            return true;
+		}
+		catch (Exception $e)
+		{
+			echo $e->getMessage();
+			return false;
+		}
+		finally
+		{
+            Conexion::cerrarConexion();
+        }
+	}
+
 
 }
