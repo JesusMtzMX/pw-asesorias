@@ -37,13 +37,19 @@ $(document).ready(function()
             });
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         'aoColumnDefs': [{ 'bSortable': false, 'aTargets': 3 }
                        
 =======
+=======
+>>>>>>> 9a9ef38747e18c4569966d808c93988844f11539
         'aoColumnDefs': [{ 'bSortable': false, 'aTargets': 0 },
                         { 'bSortable': false, 'aTargets': 3 },
         //                 {'targets': [2,3], 'className': 'text-right'},
         //                 {'targets': 4, 'className': 'text-center'}
+<<<<<<< HEAD
+>>>>>>> 9a9ef38747e18c4569966d808c93988844f11539
+=======
 >>>>>>> 9a9ef38747e18c4569966d808c93988844f11539
         ],
         'order': [[1, 'asc'],[0, 'asc']],
