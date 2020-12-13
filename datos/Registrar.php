@@ -17,9 +17,18 @@
         $asesorado->Telefono=$_POST["Telefono"];
         $asesorado->Foto=$_POST["Foto"];
        
+
+       
+
         try{
-           $dao->agregar($asesorado);
-         // var_dump($_POST);
+     //     if(!empty( $_FILES['Foto']) &&  $_FILES['Foto']['size']>0){
+        //    $dir_subir='files/'. $asesorado->Foto;
+
+      //      $enviar=move_uploaded_file($_FILES['Foto']['tmp_name'],$dir_subir);
+            $dao->agregar($asesorado);
+
+      //    }
+                   // var_dump($_POST);
        
             header("location: ../app/iniciar_sesion.php");
             
@@ -29,7 +38,6 @@
             header("location: ../app/index.php");
         } 
        
-
       }  else{
         $_SESSION["error"]=" no registrado";
         }

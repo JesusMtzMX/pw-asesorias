@@ -1,8 +1,11 @@
+$(document).ready(function(){
+
 let btnAgendar = document.querySelector(".btn-agendar");
-let btnAgendar = document.querySelector(".btn-repor");
+
 let sesion = document.querySelector("#variable_sesion").value;
 
-btnAgendar.addEventListener("click", ()=>{
+debugger;
+btnAgendar.addEventListener("click", ()=>{debugger;
     if(sesion === 'Asesorado')
     {    
             
@@ -18,7 +21,6 @@ btnAgendar.addEventListener("click", ()=>{
     }
 });
 
-$(document).ready(function(){
     $("li.active").removeClass("active");
     $("#navAsesores").addClass("active");
 

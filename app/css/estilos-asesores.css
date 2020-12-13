@@ -44,7 +44,7 @@
     text-align: center;
 }
 
-.lista-asesores .tabla-asesores img
+ #tablaAsesores img
 {
     text-align: center;
     margin: 2rem;
@@ -106,7 +106,7 @@
     margin: 4rem 5% 1rem 5%;
 }
 
-.lista-asesores .tabla-agenda-asesores tbody img
+.tabla-agenda-asesores tbody img
 {
     text-align: center;
     margin: 2rem;

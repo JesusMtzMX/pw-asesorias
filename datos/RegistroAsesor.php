@@ -15,18 +15,28 @@ if(isset($_POST["btnasesor"])){
     $asesor->Telefono = $_POST["Telefono"];
     $asesor->DescripcionPerfil=$_POST["DescripcionPerfil"];
     $asesor->TemasOfrecidos=$_POST["TemasOfrecidos"];
-    $asesor->Foto=$_POST["Foto"]
+   
     $asesor->Paypal=$_POST["Paypal"];
 
     try{
+      if(!empty( $_FILES['Foto']) &&  $_FILES['Foto']['size']>0){
+       
+        $asesor->Foto=basename($_FILES['Foto']['name']);
+        $dir_subir='files/'. $asesor->Foto;
+        $enviar=move_uploaded_file($_FILES['Foto']['tmp_name'],$dir_subir);
+        
+      
        $dao->agregar($asesor);
+      }
+
      // var_dump($_POST);
-        header("location: ../app/iniciar_sesion.php");
+       header("location: ../app/iniciar_sesion.php");
      //   require_once 'menu_asesor.php'
     }catch(Exception $e){
         $_SESSION["success"]="registrado";
         
-        header("location: ../app/index.php");
+        //var_dump($e);
+       header("location: ../app/index.php");
     } 
    
 

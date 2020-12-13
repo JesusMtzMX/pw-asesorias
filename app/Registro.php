@@ -20,7 +20,7 @@
     <div class="IS.jpg">
       <div class="content">
         <header id="header">Registrarse como ASESOR</header>
-        <form action="../datos/RegistroAsesor.php" method="POST" >
+        <form action="../datos/RegistroAsesor.php" method="POST" enctype="multipart/form-data">
         <div class="field">
         <span class="fa fa-user"></span>
               <input type="text"  placeholder="Nombre" name="Nombre">

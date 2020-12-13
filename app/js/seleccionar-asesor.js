@@ -41,9 +41,8 @@ $(document).ready(function()
                 });
             });
         },
-        'aoColumnDefs': [{ 'bSortable': false, 'aTargets': 5 },
-                        {'targets': [2,3], 'className': 'text-right'},
-                        {'targets': 4, 'className': 'text-center'}
+        'aoColumnDefs': [{ 'bSortable': false, 'aTargets': 3 }
+                       
         ],
         'order': [[1, 'asc'],[0, 'asc']],
         'language': {'url':'http://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'}
